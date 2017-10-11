@@ -11,8 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 
-public class CoffeeFragment  extends ListFragment implements  OnClickListener
-{ 
+public class CoffeeFragment  extends ListFragment implements  OnClickListener {
   protected         Base                activity;
   protected static  CoffeeListAdapter 	listAdapter;
   protected         ListView 			listView;
@@ -27,17 +26,17 @@ public class CoffeeFragment  extends ListFragment implements  OnClickListener
   }
 
 @Override
-  public void onAttach(Context context)
-  {
+  public void onAttach(Context context) {
     super.onAttach(context);
     this.activity = (Base) context;
   }
 
   @Override
-  public void onCreate(Bundle savedInstanceState)
-  {
+  public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
+    listAdapter = new CoffeeListAdapter(activity, this, Base.coffeeList);
+    setListAdapter (listAdapter);
   }
      
   @Override

@@ -10,14 +10,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-public class CoffeeListAdapter extends ArrayAdapter<Coffee> 
-{
+public class CoffeeListAdapter extends ArrayAdapter<Coffee> {
   private Context context;
   private OnClickListener deleteListener;
   public List<Coffee> coffeeList;
 
-  public CoffeeListAdapter(Context context, OnClickListener deleteListener, List<Coffee> coffeeList)
-  {
+  public CoffeeListAdapter(Context context, OnClickListener deleteListener, List<Coffee> coffeeList) {
     super(context, R.layout.coffeerow, coffeeList);
 
     this.context = context;
@@ -26,32 +24,29 @@ public class CoffeeListAdapter extends ArrayAdapter<Coffee>
   }
 
   @Override
-  public View getView(int position, View convertView, ViewGroup parent)
-  {
-    return null;
+  public View getView(int position, View convertView, ViewGroup parent) {
+    CoffeeItem item = new CoffeeItem(context, parent, deleteListener,
+            coffeeList.get(position));
+    return item.view;
   }
 
   @Override
-  public int getCount()
-  {
-    return 0;
+  public int getCount() {
+    return coffeeList.size();
   }
   
   @Override
-  public Coffee getItem(int position)
-  {
-	  return null;
+  public Coffee getItem(int position) {
+	  return coffeeList.get(position);
   }
 
   @Override
-  public long getItemId(int position)
-  {
-    return 0;
+  public long getItemId(int position) {
+    return position;
   }
 
   @Override
-  public int getPosition(Coffee c)
-  {
-    return 0;
+  public int getPosition(Coffee c) {
+    return coffeeList.indexOf(c);
   }
 }
